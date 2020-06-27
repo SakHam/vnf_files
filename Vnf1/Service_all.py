@@ -19,6 +19,7 @@ app = Flask(__name__)
 @app.route('/check/',methods = ['GET'])
 def check():
   print("Service is Up & Running")
+  return "Service is responding"
     
 @app.route('/start/',methods = ['POST'])
 def start():
