@@ -15,6 +15,11 @@ automation_id = 1584118258158
 app = Flask(__name__)
 
 #3 options, load, start and stop the new service 
+@app.route('/check/',methods = ['GET'])
+def check():
+  print("the Service is up and Running")
+  return "the Service is up and Running"
+
 @app.route('/start/',methods = ['POST'])
 def start():
   camera_name = request.args.get('camera_name','')
