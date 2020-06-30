@@ -3,5 +3,5 @@
 sudo apt-get update
 sudo apt-get install python -y
 sudo apt-get install python-pip -y
-sudo pip3 install -U Flask
-sudo pip3 install flask-restful
+sudo pip install -U Flask
+sudo pip install flask-restful
