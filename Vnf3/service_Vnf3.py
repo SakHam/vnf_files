@@ -183,7 +183,7 @@ def start():
 
   print("Restart Home-Assitant")
 
-  cmd = 'sudo docker restart 425674f5d108'
+  cmd = 'sudo docker restart homeassistant'
   os.system(cmd)
 
   time.sleep(2)
@@ -268,7 +268,7 @@ def stop():
 
   print("Restart Home-Assitant")
 
-  cmd = 'sudo docker restart 425674f5d108'
+  cmd = 'sudo docker restart homeassistant'
   os.system(cmd) 
 
   time.sleep(30)
