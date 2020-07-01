@@ -35,7 +35,7 @@ def check():
   
   
   
-  return "Send check the requests : " + data_obj_det + data_monitoring
+  return "Send the check requests : " + data_obj_det + data_monitoring
 
 #3 options, load, start and stop the new service 
 
@@ -48,14 +48,14 @@ def start():
   
   URL1 = "http://192.168.79.18/start"
   
-  r_object_detect = requests.get(url = URL1, params = PARAMS) 
+  r_object_detect = requests.post(url = URL1, data = PARAMS) 
   
-  data_obj_det = r_object_detect.json() 
+  data_obj_det = r_object_detect.text() 
  
   URL2 = "http://192.168.79.10/start"
-  r_monitoring = requests.get(url = URL2, params = PARAMS) 
+  r_monitoring = requests.post(url = URL2, data = PARAMS) 
   
-  data_monitoring = r_monitoring.json() 
+  data_monitoring = r_monitoring.text() 
   
   
   print(data_obj_det)
@@ -63,7 +63,7 @@ def start():
   
   
   
-  return "Send start the requests : " + data_obj_det + data_monitoring
+  return "Send the start requests : " + data_obj_det + data_monitoring
 
 
 
@@ -75,14 +75,14 @@ def stop():
   PARAMS = {'camera_name':camera_name} 
   
   URL1 = "http://192.168.79.18/stop"
-  r_object_detect = requests.get(url = URL1, params = PARAMS) 
+  r_object_detect = requests.post(url = URL1, data = PARAMS) 
   
-  data_obj_det = r_object_detect.json() 
+  data_obj_det = r_object_detect.text() 
  
   URL2 = "http://192.168.79.10/stop"
-  r_monitoring = requests.get(url = URL2, params = PARAMS) 
+  r_monitoring = requests.post(url = URL2, data = PARAMS) 
   
-  data_monitoring = r_monitoring.json() 
+  data_monitoring = r_monitoring.text() 
   
   
   print(data_obj_det)
