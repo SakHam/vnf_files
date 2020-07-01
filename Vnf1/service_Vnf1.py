@@ -17,7 +17,26 @@ app = Flask(__name__)
 @app.route('/check/',methods = ['GET'])
 def check():
   print("the Service is up and Running")
-  return "the Service is up and Running"
+  
+  URL1 = "http://192.168.79.18/check"
+  
+  r_object_detect = requests.get(url = URL1) 
+  
+  data_obj_det = r_object_detect.json() 
+ 
+  URL2 = "http://192.168.79.10/check"
+  r_monitoring = requests.get(url = URL2) 
+  
+  data_monitoring = r_monitoring.json() 
+  
+  
+  print(data_obj_det)
+  print(data_monitoring)
+  
+  
+  
+  return "Send check the requests : " + data_obj_det + data_monitoring
+
 #3 options, load, start and stop the new service 
 
 @app.route('/start/',methods = ['POST'])
