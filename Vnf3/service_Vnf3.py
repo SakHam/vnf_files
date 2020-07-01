@@ -23,24 +23,7 @@ def start():
 
 
   global ports, automation_id
-  docker_ports = str(ports) + ':' + str(ports)
-  print("Frigate Camera Settings Configurations")
-  with open('/home/camera/frigate/configs/config.yml', 'r') as file :
-    filedata = file.read()
-
-# Replace the target string
-  filedata = filedata.replace('person', object_name)
-  filedata = filedata.replace('network_url', network_url)
-  filedata = filedata.replace('name_cam', camera_name)
-  filedata = filedata.replace('port_web', str(ports))
-  cmd = 'mkdir -m 777 "/home/camera/frigate/"' + camera_name
-  os.system(cmd)
-
-# Write the file out again
-  with open('/home/camera/frigate/' + camera_name + '/config.yml', 'w') as file:
-    file.write(filedata)
-
-
+ 
   time.sleep(2)
 ### configure input number 
 
@@ -203,17 +186,10 @@ def start():
   cmd = 'sudo docker restart 425674f5d108'
   os.system(cmd)
 
-  time.sleep(30)
-  print("Run Object Detection Service  at Ports : " + str(ports))
-  cmd = 'sudo docker run -d --name ' + camera_name + ' --rm --privileged --shm-size=1g -v /dev/bus/usb:/dev/bus/usb -v /home/camera/frigate/' + camera_name + ':/config:ro -p ' + docker_ports + ' -e RTSP_PASSWORD="admin" frigate2:latest'
-  os.system(cmd)
-
-  ports = ports + 1
-  print("Update Ports : " + str(ports))
   time.sleep(2)
 
 
-  return "Service " + camera_name + " Started"
+  return "Home Assistant for " + camera_name + " Started"
 
 
 
@@ -297,10 +273,7 @@ def stop():
 
   time.sleep(30)
 
-  print("Stop container service of " + camera_name)
-  cmd = 'sudo docker rm -f ' + camera_name
-  os.system(cmd)
-  return "Service " + camera_name + " Stopped"
+  return "Home Assistant for " + camera_name + " Stopped"
   
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
