@@ -18,7 +18,7 @@ app = Flask(__name__)
 @app.route('/check/',methods = ['GET'])
 def check():
   print("the DetectionService is up and Running")
-  return "the DetectionService Service is up and Running"
+  return "the Detection Service Service is up and Running"
 
 @app.route('/start/',methods = ['POST'])
 def start():
