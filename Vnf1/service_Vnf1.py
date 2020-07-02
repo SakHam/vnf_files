@@ -18,13 +18,13 @@ app = Flask(__name__)
 def check():
   print("the Service is up and Running")
   
-  URL1 = "http://192.168.79.18/check"
+  URL1 = "http://192.168.79.18:5000/check"
   
   r_object_detect = requests.get(url = URL1) 
   
   data_obj_det = r_object_detect.json() 
  
-  URL2 = "http://192.168.79.10/check"
+  URL2 = "http://192.168.79.10:5000/check"
   r_monitoring = requests.get(url = URL2) 
   
   data_monitoring = r_monitoring.json() 
@@ -46,13 +46,13 @@ def start():
   object_name = request.args.get('object_name','')  
   PARAMS = {'camera_name':camera_name, 'network_url':network_url, 'object_name':object_name} 
   
-  URL1 = "http://192.168.79.18/start"
+  URL1 = "http://192.168.79.18:5000/start"
   
   r_object_detect = requests.post(url = URL1, data = PARAMS) 
   
   data_obj_det = r_object_detect.text() 
  
-  URL2 = "http://192.168.79.10/start"
+  URL2 = "http://192.168.79.10:5000/start"
   r_monitoring = requests.post(url = URL2, data = PARAMS) 
   
   data_monitoring = r_monitoring.text() 
@@ -74,12 +74,12 @@ def stop():
   camera_name = request.args.get("camera_name","")
   PARAMS = {'camera_name':camera_name} 
   
-  URL1 = "http://192.168.79.18/stop"
+  URL1 = "http://192.168.79.18:5000/stop"
   r_object_detect = requests.post(url = URL1, data = PARAMS) 
   
   data_obj_det = r_object_detect.text() 
  
-  URL2 = "http://192.168.79.10/stop"
+  URL2 = "http://192.168.79.10:5000/stop"
   r_monitoring = requests.post(url = URL2, data = PARAMS) 
   
   data_monitoring = r_monitoring.text() 
