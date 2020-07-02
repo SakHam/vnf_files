@@ -81,10 +81,10 @@ def stop():
   
   PARAMS = {'camera_name':camera_name} 
   
-  URL1 = "http://192.168.79.18:5000/stop"
+  URL1 = "http://192.168.79.18:5000/stop/"
   r_object_detect = requests.post(url = URL1, data = PARAMS) 
    
-  URL2 = "http://192.168.79.10:5000/stop"
+  URL2 = "http://192.168.79.10:5000/stop/"
   r_monitoring = requests.post(url = URL2, data = PARAMS) 
   
   if r_object_detect.status_code == 200 :
