@@ -14,6 +14,10 @@ ports = 4500
 automation_id = 1584118258158
 app = Flask(__name__)
 
+@app.route('/check/',methods = ['GET'])
+def check():
+  print("the Monitoring Service is up and Running")
+  return "the Monitoring Service is up and Running"
 #3 options, load, start and stop the new service 
 @app.route('/start/',methods = ['POST'])
 def start():
