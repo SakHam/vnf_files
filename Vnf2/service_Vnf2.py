@@ -17,8 +17,8 @@ app = Flask(__name__)
 #3 options, load, start and stop the new service 
 @app.route('/check/',methods = ['GET'])
 def check():
-  print("the Service is up and Running")
-  return "the Service is up and Running"
+  print("the DetectionService is up and Running")
+  return "the DetectionService Service is up and Running"
 
 @app.route('/start/',methods = ['POST'])
 def start():
