@@ -31,14 +31,14 @@ def start():
   time.sleep(2)
 ### configure input number 
 
-  with open('/usr/share/hassio/homeassistant/configuration.yaml', 'r+') as output, open('/home/camera/frigate/configs/input_number_template.yaml', 'rb') as input:
+  with open('/usr/share/hassio/homeassistant/configuration.yaml', 'r+') as output, open('/home/ubuntu/object_detection/frigate/configs/input_number_template.yaml', 'rb') as input:
     fileinput = input.read() 
     fileinput = fileinput.replace('camer_name', camera_name)
 
     filedataout = output.read() 
     filedataout = filedataout.replace('input_number:', 'input_number:\n' + str(fileinput))
 
-  with open('/home/camera/frigate/' + camera_name + '/input_number.yaml', 'w') as file:
+  with open('/home/ubuntu/object_detection/frigate/' + camera_name + '/input_number.yaml', 'w') as file:
     file.write(fileinput)
 
   with open('/usr/share/hassio/homeassistant/configuration.yaml', 'w') as file:
@@ -48,7 +48,7 @@ def start():
   print("Home-Assitant Camera Settings Configurations")
 
 
-  with open('/usr/share/hassio/homeassistant/configuration.yaml', 'a') as output, open('/home/camera/frigate/configs/cameras.yaml', 'rb') as input:
+  with open('/usr/share/hassio/homeassistant/configuration.yaml', 'a') as output, open('/home/ubuntu/object_detection/frigate/configs/cameras.yaml', 'rb') as input:
     filedata = input.read()
     filedata = filedata.replace('camer_name', camera_name)
     filedata = filedata.replace('id_name', camera_name)
@@ -64,12 +64,12 @@ def start():
     output.write('\n')	
     output.write(filedata)
 
-  with open('/home/camera/frigate/' + camera_name + '/cameras.yaml', 'w') as file:
+  with open(/home/ubuntu/object_detection/frigate/' + camera_name + '/cameras.yaml', 'w') as file:
     file.write(filedata)
 
   time.sleep(2)
   print("Home-Assitant Camera Automation Configurations")
-  with open('/usr/share/hassio/homeassistant/automations.yaml', 'a') as output, open('/home/camera/frigate/configs/automation.yaml', 'rb') as input:
+  with open('/usr/share/hassio/homeassistant/automations.yaml', 'a') as output, open('/home/ubuntu/object_detection/frigate/configs/automation.yaml', 'rb') as input:
     filedata = input.read()
     filedata = filedata.replace('id_number', "'" + str(automation_id) + "'")
     filedata = filedata.replace('objn', object_name)    
@@ -77,7 +77,7 @@ def start():
     output.write('\n')	
     output.write(filedata)
   automation_id = automation_id + 1
-  with open('/home/camera/frigate/' + camera_name + '/automation.yaml', 'w') as file:
+  with open('/home/ubuntu/object_detection/frigate/' + camera_name + '/automation.yaml', 'w') as file:
     file.write(filedata)
 
 
@@ -87,7 +87,7 @@ def start():
   print("Home-Assitant Cards Camera Settings Configurations")
 
 ## Configure Cards_stream
-  with open('/home/camera/frigate/configs/Cards_stream', 'r') as file :
+  with open('/home/ubuntu/object_detection/frigate/configs/Cards_stream', 'r') as file :
     filedata = file.read()
 
 # Replace the target string
@@ -96,11 +96,11 @@ def start():
 
 
 # Write the file out again
-  with open('/home/camera/frigate/' + camera_name + '/Cards_stream', 'w') as file:
+  with open('/home/ubuntu/object_detection/frigate/' + camera_name + '/Cards_stream', 'w') as file:
     file.write(filedata)
 
 ## Configure Cards_image
-  with open('/home/camera/frigate/configs/Cards_image', 'r') as file :
+  with open('/home/ubuntu/object_detection/frigate/configs/Cards_image', 'r') as file :
     filedata = file.read()
 
 # Replace the target string
@@ -108,11 +108,11 @@ def start():
   filedata = filedata.replace('objn', object_name)
 
 # Write the file out again
-  with open('/home/camera/frigate/' + camera_name + '/Cards_image', 'w') as file:
+  with open('/home/ubuntu/object_detection/frigate/' + camera_name + '/Cards_image', 'w') as file:
     file.write(filedata)
 
 ## Configure Cards_event
-  with open('/home/camera/frigate/configs/Cards_event', 'r') as file :
+  with open('/home/ubuntu/object_detectiona/frigate/configs/Cards_event', 'r') as file :
     filedata = file.read()
 
 # Replace the target string
@@ -120,11 +120,11 @@ def start():
 
 
 # Write the file out again
-  with open('/home/camera/frigate/' + camera_name + '/Cards_event', 'w') as file:
+  with open('/home/ubuntu/object_detection/frigate/' + camera_name + '/Cards_event', 'w') as file:
     file.write(filedata)
 
 ## Configure Cards_sum
-  with open('/home/camera/frigate/configs/Cards_sum', 'r') as file :
+  with open('/home/ubuntu/object_detection/frigate/configs/Cards_sum', 'r') as file :
     filedata = file.read()
 
 # Replace the target string
@@ -132,7 +132,7 @@ def start():
   filedata = filedata.replace('objn', object_name)
 
 # Write the file out again
-  with open('/home/camera/frigate/' + camera_name + '/Cards_sum', 'w') as file:
+  with open('/home/ubuntu/object_detection/frigate/' + camera_name + '/Cards_sum', 'w') as file:
     file.write(filedata)
 
   time.sleep(2)
@@ -141,7 +141,7 @@ def start():
   print("Update Lovelace file")
 
 
-  with open(r'/home/camera/frigate/configs/lovelace') as file:
+  with open(r'/home/ubuntu/object_detection/frigate/configs/lovelace') as file:
     # The FullLoader parameter handles the conversion from YAML
     # scalar values to Python the dictionary format
     HA_configs  = json.load(file)
@@ -149,21 +149,21 @@ def start():
 
 
 
-  with open(r'/home/camera/frigate/' + camera_name + '/Cards_stream') as file:
+  with open(r'/home/ubuntu/object_detection/frigate/' + camera_name + '/Cards_stream') as file:
     # The FullLoader parameter handles the conversion from YAML
     # scalar values to Python the dictionary format
     card_configs1  = json.load(file)
 
-  with open(r'/home/camera/frigate/' + camera_name + '/Cards_image') as file:
+  with open(r'/home/ubuntu/object_detection/frigate/' + camera_name + '/Cards_image') as file:
     # The FullLoader parameter handles the conversion from YAML
     # scalar values to Python the dictionary format
     card_configs2  = json.load(file)
-  with open(r'/home/camera/frigate/' + camera_name + '/Cards_event') as file:
+  with open(r'/home/ubuntu/object_detection/frigate/' + camera_name + '/Cards_event') as file:
     # The FullLoader parameter handles the conversion from YAML
     # scalar values to Python the dictionary format
     card_configs3  = json.load(file)
 
-  with open(r'/home/camera/frigate/' + camera_name + '/Cards_sum') as file:
+  with open(r/home/ubuntu/object_detection/frigate/' + camera_name + '/Cards_sum') as file:
     # The FullLoader parameter handles the conversion from YAML
     # scalar values to Python the dictionary format
     card_configs4  = json.load(file)
@@ -178,7 +178,7 @@ def start():
   with open('/usr/share/hassio/homeassistant/.storage/lovelace', 'w') as file:
     file.write(json_output)
 
-  cmd = 'sudo cp /usr/share/hassio/homeassistant/.storage/lovelace /home/camera/frigate/configs/lovelace'
+  cmd = 'sudo cp /usr/share/hassio/homeassistant/.storage/lovelace /home/ubuntu/object_detection/frigate/configs/lovelace'
   os.system(cmd)
 
   time.sleep(2)
@@ -206,7 +206,7 @@ def stop():
   global ports, automation_id
 
 
-  with open('/usr/share/hassio/homeassistant/configuration.yaml', 'rb') as output, open('/home/camera/frigate/' + camera_name + '/cameras.yaml', 'rb') as input:
+  with open('/usr/share/hassio/homeassistant/configuration.yaml', 'rb') as output, open('/home/ubuntu/object_detection/frigate/' + camera_name + '/cameras.yaml', 'rb') as input:
     filedata_in = input.read()
     fifledata_out = output.read()
     fifledata_out = fifledata_out.replace(filedata_in, '')
@@ -214,7 +214,7 @@ def stop():
     file.write(fifledata_out)
 
 
-  with open('/usr/share/hassio/homeassistant/configuration.yaml', 'rb') as output, open('/home/camera/frigate/' + camera_name + '/input_number.yaml', 'rb') as input:
+  with open('/usr/share/hassio/homeassistant/configuration.yaml', 'rb') as output, open('/home/ubuntu/object_detection/frigate/' + camera_name + '/input_number.yaml', 'rb') as input:
     filedata_in = input.read()
     fifledata_out = output.read()
     fifledata_out = fifledata_out.replace(filedata_in, '')
@@ -223,7 +223,7 @@ def stop():
 
 
 
-  with open('/usr/share/hassio/homeassistant/automations.yaml', 'rb') as output, open('/home/camera/frigate/' + camera_name + '/automation.yaml', 'rb') as input:
+  with open('/usr/share/hassio/homeassistant/automations.yaml', 'rb') as output, open('/home/ubuntu/object_detection/frigate/' + camera_name + '/automation.yaml', 'rb') as input:
     filedata_in = input.read()
     fifledata_out = output.read()
     fifledata_out = fifledata_out.replace(filedata_in, '')
@@ -266,7 +266,7 @@ def stop():
 
 
 
-  cmd = 'sudo cp /usr/share/hassio/homeassistant/.storage/lovelace /home/camera/frigate/configs/lovelace'
+  cmd = 'sudo cp /usr/share/hassio/homeassistant/.storage/lovelace /home/ubuntu/object_detection/frigate/configs/lovelace'
   os.system(cmd)
 
 
