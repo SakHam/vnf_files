@@ -54,12 +54,12 @@ def start():
   r_monitoring = requests.post(url = URL2, data = PARAMS) 
   
   
-  if r_object_detect.status_code == 200 :
+  if r_object_detect.status_code == 200:
     print('The Start Detection Service was send succesfully')  
     chk = chk + 1
   else:
     print('The Start Detection Service failed')
-   if r_monitoring.status_code == 200 :
+  if r_monitoring.status_code == 200:
     print('The Start Monitoring Service was send succesfully')    
     chk = chk + 1
   else:
@@ -87,12 +87,12 @@ def stop():
   URL2 = "http://192.168.79.10:5000/stop/"
   r_monitoring = requests.post(url = URL2, data = PARAMS) 
   
-  if r_object_detect.status_code == 200 :
+  if r_object_detect.status_code == 200:
     print('The Stop Detection Service was send succesfully')  
     chk = chk + 1
   else:
     print('The Stop Detection Service failed')
-   if r_monitoring.status_code == 200 :
+  if r_monitoring.status_code == 200:
     print('The Stop Monitoring Service was send succesfully')    
     chk = chk + 1
   else:
