@@ -18,24 +18,24 @@ app = Flask(__name__)
 def check():
   print("the Service is up and Running")
   
-  URL1 = "http://192.168.79.18:5000/check"
+  URL1 = "http://192.168.79.18:5000/check/"
+  URL2 = "http://192.168.79.10:5000/check/"
   
-  r_object_detect = requests.get(url = URL1) 
-  
-  data_obj_det = r_object_detect.text() 
- 
-  URL2 = "http://192.168.79.10:5000/check"
+  r_object_detect = requests.get(url = URL1)
   r_monitoring = requests.get(url = URL2) 
   
-  data_monitoring = r_monitoring.text() 
   
+  if r_object_detect.status_code == 200 and r_monitoring.status_code == 200:
+    print('The Detection Service is up and Running!')
+    print('The Monitoring Service is up and Running!')
+    return "Both Services are running"
+  else:
+    print('The Services dont respond')
+    return "The Services dont respond"
+    
   
-  print(data_obj_det)
-  print(data_monitoring)
+
   
-  
-  
-  return "Send the check requests : " + data_obj_det + data_monitoring
 
 #3 options, load, start and stop the new service 
 
