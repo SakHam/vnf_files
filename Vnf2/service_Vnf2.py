@@ -30,7 +30,7 @@ def start():
   global ports, automation_id
   docker_ports = str(ports) + ':' + str(ports)
   print("Frigate Camera Settings Configurations")
-  with open('/home/camera/frigate/configs/config.yml', 'r') as file :
+  with open('/home/ubuntu/object_detection/frigate/configs/config.yml', 'r') as file :
     filedata = file.read()
 
 # Replace the target string
@@ -38,11 +38,11 @@ def start():
   filedata = filedata.replace('network_url', network_url)
   filedata = filedata.replace('name_cam', camera_name)
   filedata = filedata.replace('port_web', str(ports))
-  cmd = 'mkdir -m 777 "/home/camera/frigate/"' + camera_name
+  cmd = 'mkdir -m 777 "/home/ubuntu/object_detection/frigate/"' + camera_name
   os.system(cmd)
 
 # Write the file out again
-  with open('/home/camera/frigate/' + camera_name + '/config.yml', 'w') as file:
+  with open('/home/ubuntu/object_detection/frigate/' + camera_name + '/config.yml', 'w') as file:
     file.write(filedata)
 
 
