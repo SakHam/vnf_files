@@ -1,0 +1,11 @@
+
+{
+  "name":"influxdb",
+  "type":"influxdb",
+  "url":"http://influxdb:8086",
+  "access":"proxy",
+  "password": "mqtt",
+  "user": "mqtt",
+  "database": "mqtt",
+  "basicAuth":false
+}
